@@ -12,7 +12,7 @@ export class EventsGateway {
     @MessageBody() data: any,
     @ConnectedSocket() client: Socket,
   ): string {
-    console.log('>>>', data.type);
+    console.log(`[${new Date()}] ${client.id} : ${data.type}`);
     client.broadcast.emit('events', data);
     return 'ok';
   }
